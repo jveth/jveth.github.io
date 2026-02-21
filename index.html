@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julibeth Rodríguez</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0D0D0D;
+    --white: #F5F5F5;
+    --gray-dark: #333333;
+    --gray-mid: #666666;
+    --gray-light: #999999;
+    --gray-border: #222222;
+    --gray-section: #111111;
+    --gray-card: #1A1A1A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 72px;
+    background: linear-gradient(to bottom, rgba(13,13,13,0.97) 0%, transparent 100%);
+  }
+
+  .nav-logo {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 48px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--gray-light);
+    text-decoration: none;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 130px 72px 90px;
+  }
+
+  .hero-eyebrow {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.2s;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 36px;
+    height: 1px;
+    background: var(--gray-mid);
+  }
+
+  .hero-name {
+    font-size: clamp(60px, 6.5vw, 108px);
+    font-weight: 200;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.4s;
+  }
+
+  .hero-name strong {
+    font-weight: 800;
+    display: block;
+  }
+
+  .hero-tagline {
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--gray-mid);
+    line-height: 2.2;
+    margin-bottom: 56px;
+    max-width: 340px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.6s;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 0;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.8s;
+  }
+
+  .btn-primary {
+    background: var(--white);
+    color: var(--black);
+    padding: 15px 36px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--gray-light); }
+
+  .btn-ghost {
+    color: var(--gray-light);
+    padding: 15px 36px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--gray-border);
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn-ghost:hover { color: var(--white); border-color: var(--gray-mid); }
+
+  .hero-right {
+    position: relative;
+    border-left: 1px solid var(--gray-border);
+    display: flex;
+    align-items: flex-end;
+    padding: 90px 60px;
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 280px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.02);
+    letter-spacing: -0.06em;
+    line-height: 1;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    width: 100%;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards 1s;
+  }
+
+  .stat-box {
+    background: var(--gray-card);
+    padding: 28px 24px;
+    border: 1px solid var(--gray-border);
+  }
+
+  .stat-number {
+    font-size: 36px;
+    font-weight: 200;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-section {
+    border-top: 1px solid var(--gray-border);
+    border-bottom: 1px solid var(--gray-border);
+    padding: 16px 0;
+    overflow: hidden;
+    background: var(--gray-card);
+  }
+
+  .marquee-track {
+    display: flex;
+    animation: marquee 22s linear infinite;
+    white-space: nowrap;
+  }
+
+  .marquee-item {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    padding: 0 48px;
+    display: inline-flex;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .marquee-item::after {
+    content: '—';
+    color: var(--gray-dark);
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .section-label {
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--gray-mid);
+  }
+
+  /* ── ABOUT ── */
+  .about-section {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    min-height: 80vh;
+  }
+
+  .about-left {
+    padding: 100px 72px;
+    border-right: 1px solid var(--gray-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .about-headline {
+    font-size: clamp(38px, 4vw, 58px);
+    font-weight: 200;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .about-headline strong { font-weight: 800; }
+
+  .about-right {
+    padding: 100px 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .about-body p {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 2.2;
+    color: var(--gray-mid);
+    margin-bottom: 20px;
+  }
+
+  .about-body p strong { color: var(--white); font-weight: 600; }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .edu-card {
+    background: var(--gray-card);
+    padding: 24px;
+    border: 1px solid var(--gray-border);
+    transition: border-color 0.3s;
+  }
+
+  .edu-card:hover { border-color: var(--gray-mid); }
+
+  .edu-year {
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    margin-bottom: 10px;
+  }
+
+  .edu-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .edu-inst {
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--gray-mid);
+  }
+
+  /* ── PILLARS ── */
+  .pillars-section {
+    background: var(--gray-section);
+    border-top: 1px solid var(--gray-border);
+    border-bottom: 1px solid var(--gray-border);
+  }
+
+  .pillars-header { padding: 80px 72px 0; }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 60px;
+  }
+
+  .pillar-card {
+    padding: 60px 56px;
+    border-right: 1px solid var(--gray-border);
+    border-top: 1px solid var(--gray-border);
+    transition: background 0.3s;
+  }
+
+  .pillar-card:last-child { border-right: none; }
+  .pillar-card:hover { background: rgba(255,255,255,0.02); }
+
+  .pillar-num {
+    font-size: 80px;
+    font-weight: 800;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    margin-bottom: 24px;
+    letter-spacing: -0.05em;
+  }
+
+  .pillar-title {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .pillar-desc {
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 2.1;
+    color: var(--gray-mid);
+  }
+
+  /* ── EXPERTISE ── */
+  .expertise-section { padding: 120px 72px; }
+
+  .expertise-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 80px;
+    align-items: end;
+  }
+
+  .expertise-headline {
+    font-size: clamp(42px, 4.5vw, 68px);
+    font-weight: 200;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .expertise-headline strong { font-weight: 800; }
+
+  .expertise-sub {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--gray-mid);
+    line-height: 2;
+    max-width: 340px;
+    align-self: end;
+  }
+
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .expertise-card {
+    background: var(--gray-card);
+    padding: 52px 44px;
+    border: 1px solid var(--gray-border);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .expertise-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    height: 2px; width: 0;
+    background: var(--white);
+    transition: width 0.5s ease;
+  }
+
+  .expertise-card:hover { background: #1f1f1f; }
+  .expertise-card:hover::before { width: 100%; }
+
+  .exp-num {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    color: var(--gray-dark);
+    margin-bottom: 32px;
+  }
+
+  .exp-title {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+
+  .exp-desc {
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 2.1;
+    color: var(--gray-mid);
+    margin-bottom: 28px;
+  }
+
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .tag {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border: 1px solid var(--gray-dark);
+    color: var(--gray-light);
+  }
+
+  /* ── CLIENTS ── */
+  .clients-section {
+    background: var(--gray-section);
+    border-top: 1px solid var(--gray-border);
+  }
+
+  .clients-inner { padding: 120px 72px; }
+
+  .clients-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+    margin-bottom: 80px;
+  }
+
+  .clients-headline {
+    font-size: clamp(40px, 4vw, 64px);
+    font-weight: 200;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .clients-headline strong { font-weight: 800; }
+
+  .clients-note {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--gray-mid);
+    line-height: 2;
+    max-width: 360px;
+  }
+
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .client-card {
+    background: var(--gray-card);
+    aspect-ratio: 2/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--gray-border);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gray-dark);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .client-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--white);
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+  }
+
+  .client-card span { position: relative; z-index: 1; transition: color 0.3s; }
+  .client-card:hover::before { transform: translateY(0); }
+  .client-card:hover span { color: var(--black); }
+
+  /* ── METRICS ── */
+  .metrics-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--gray-border);
+  }
+
+  .metric-item {
+    padding: 64px 40px;
+    border-right: 1px solid var(--gray-border);
+    text-align: center;
+  }
+
+  .metric-item:last-child { border-right: none; }
+
+  .metric-value {
+    font-size: 64px;
+    font-weight: 200;
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: -0.04em;
+    margin-bottom: 12px;
+  }
+
+  .metric-label {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--gray-border);
+  }
+
+  .contact-left {
+    padding: 120px 72px;
+    border-right: 1px solid var(--gray-border);
+  }
+
+  .contact-headline {
+    font-size: clamp(44px, 4.5vw, 72px);
+    font-weight: 200;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 64px;
+  }
+
+  .contact-headline strong { font-weight: 800; }
+
+  .contact-row {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--gray-border);
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--gray-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-light);
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .c-label {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    margin-bottom: 5px;
+  }
+
+  .c-value {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--white);
+  }
+
+  .contact-right {
+    padding: 120px 72px;
+    display: flex;
+    align-items: center;
+  }
+
+  .availability-box {
+    width: 100%;
+    background: var(--gray-card);
+    border: 1px solid var(--gray-border);
+    padding: 56px;
+  }
+
+  .status-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--white);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .status-text {
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .avail-title {
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.4;
+    margin-bottom: 20px;
+  }
+
+  .avail-title strong { font-weight: 800; }
+
+  .avail-desc {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--gray-mid);
+    line-height: 2;
+    margin-bottom: 36px;
+  }
+
+  .services-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 44px;
+  }
+
+  .services-list li {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--gray-light);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .services-list li::before {
+    content: '';
+    width: 16px;
+    height: 1px;
+    background: var(--gray-mid);
+    flex-shrink: 0;
+  }
+
+  .cta-email {
+    display: block;
+    background: var(--white);
+    color: var(--black);
+    text-align: center;
+    padding: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+
+  .cta-email:hover { background: var(--gray-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 32px 72px;
+    border-top: 1px solid var(--gray-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .footer-copy {
+    font-size: 9px;
+    font-weight: 300;
+    color: var(--gray-dark);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .hero, .about-section, .contact-section { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .about-left { border-right: none; border-bottom: 1px solid var(--gray-border); padding: 80px 40px 60px; }
+    .about-right { padding: 60px 40px 80px; }
+    .pillars-grid, .expertise-grid, .clients-grid, .metrics-strip { grid-template-columns: 1fr; }
+    .pillar-card { border-right: none; }
+    .expertise-header, .clients-top { grid-template-columns: 1fr; gap: 24px; }
+    nav { padding: 24px 40px; }
+    .nav-links { gap: 24px; }
+    .expertise-section, .clients-inner, .pillars-header { padding: 80px 40px; }
+    .contact-left, .contact-right { padding: 80px 40px; }
+    .contact-left { border-right: none; border-bottom: 1px solid var(--gray-border); }
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Julibeth Rodríguez</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Santo Domingo · Madrid</div>
+    <h1 class="hero-name">
+      Julibeth<br>
+      <strong>Rodríguez</strong>
+    </h1>
+    <p class="hero-tagline">
+      AI Consultant · Data Analyst<br>
+      Marketing Strategist<br>
+      Managing Partner, BL Marketing Group
+    </p>
+    <div class="hero-cta-group">
+      <a href="#contact" class="btn-primary">Work Together</a>
+      <a href="#expertise" class="btn-ghost">View Expertise</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-bg-text">JR</div>
+    <div class="hero-stats">
+      <div class="stat-box">
+        <div class="stat-number">7+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Languages</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">4+</div>
+        <div class="stat-label">Global Brands</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">MBA</div>
+        <div class="stat-label">AI · IEP Madrid 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">AI Consulting</span>
+    <span class="marquee-item">Data Analytics</span>
+    <span class="marquee-item">Digital Marketing</span>
+    <span class="marquee-item">Machine Learning</span>
+    <span class="marquee-item">Paid Media Strategy</span>
+    <span class="marquee-item">Brand Development</span>
+    <span class="marquee-item">Python · TensorFlow</span>
+    <span class="marquee-item">Market Research</span>
+    <span class="marquee-item">AI Consulting</span>
+    <span class="marquee-item">Data Analytics</span>
+    <span class="marquee-item">Digital Marketing</span>
+    <span class="marquee-item">Machine Learning</span>
+    <span class="marquee-item">Paid Media Strategy</span>
+    <span class="marquee-item">Brand Development</span>
+    <span class="marquee-item">Python · TensorFlow</span>
+    <span class="marquee-item">Market Research</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-left reveal">
+    <div class="section-label">About</div>
+    <h2 class="about-headline">Where<br>creativity<br>meets<br><strong>intelligence</strong></h2>
+  </div>
+  <div class="about-right">
+    <div class="about-body reveal">
+      <p>Executive and strategist with solid experience in <strong>marketing strategy, innovation, and brand development</strong>. Advanced training in Artificial Intelligence, Data Science, and Data Analysis bridges creative vision with deep technical competencies.</p>
+      <p>Managing Partner at <strong>BL Marketing Group</strong> — trusted by global brands. Co-founding <strong>True Research</strong>, a strategic data and call center services firm serving enterprise clients across banking and corporate sectors.</p>
+      <p>Trilingual (EN / ES / PT) professional operating between Santo Domingo and Madrid, finalizing an <strong>MBA in Artificial Intelligence</strong> at Instituto Europeo de Posgrado in June 2026.</p>
+    </div>
+    <div class="edu-grid reveal">
+      <div class="edu-card">
+        <div class="edu-year">2025–2026</div>
+        <div class="edu-title">MBA — Artificial Intelligence</div>
+        <div class="edu-inst">Instituto Europeo de Posgrado, Madrid</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-year">2025–2026</div>
+        <div class="edu-title">Artificial Intelligence</div>
+        <div class="edu-inst">Centro Estudios Innovación, Madrid</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-year">2022</div>
+        <div class="edu-title">Marketing Management</div>
+        <div class="edu-inst">Harvard Extension, Boston</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-year">2013</div>
+        <div class="edu-title">Mass Communication</div>
+        <div class="edu-inst">PUCMM, Santo Domingo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars-section">
+  <div class="pillars-header reveal">
+    <div class="section-label">Professional Ecosystem</div>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar-card reveal">
+      <div class="pillar-num">01</div>
+      <div class="pillar-title">Corporate Agency</div>
+      <p class="pillar-desc">Leading BL Marketing Group — driving agency operations, premium client campaigns, creative team oversight, and business development. Trusted by Corona Beer, BMW, MINI, and Hyundai.</p>
+    </div>
+    <div class="pillar-card reveal">
+      <div class="pillar-num">02</div>
+      <div class="pillar-title">Research & Innovation</div>
+      <p class="pillar-desc">Co-founding True Research — delivering market intelligence, data analysis, and call center solutions for banking and corporate enterprise clients. Where data becomes strategy.</p>
+    </div>
+    <div class="pillar-card reveal">
+      <div class="pillar-num">03</div>
+      <div class="pillar-title">Academia & AI</div>
+      <p class="pillar-desc">Finalizing MBA in Artificial Intelligence at IEP Madrid 2026. Applying predictive modeling, machine learning, and AI engineering to real-world business transformation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="expertise-section" id="expertise">
+  <div class="expertise-header reveal">
+    <h2 class="expertise-headline">Core<br><strong>Expertise</strong></h2>
+    <p class="expertise-sub">A rare combination of creative marketing strategy and technical AI capability — built for the next era of business growth.</p>
+  </div>
+  <div class="expertise-grid">
+    <div class="expertise-card reveal">
+      <div class="exp-num">01</div>
+      <h3 class="exp-title">AI Strategy &<br>Consulting</h3>
+      <p class="exp-desc">Applied AI consulting focused on decision optimization and business efficiency. From machine learning models to prompt engineering that drives measurable results.</p>
+      <div class="exp-tags">
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Python</span>
+        <span class="tag">TensorFlow</span>
+        <span class="tag">Predictive Modeling</span>
+      </div>
+    </div>
+    <div class="expertise-card reveal">
+      <div class="exp-num">02</div>
+      <h3 class="exp-title">Digital<br>Marketing</h3>
+      <p class="exp-desc">Full-service strategic direction for premium brands. Data-driven campaigns, paid media optimization, and creative direction that delivers ROI — not vanity metrics.</p>
+      <div class="exp-tags">
+        <span class="tag">Paid Media</span>
+        <span class="tag">Analytics</span>
+        <span class="tag">Brand Dev</span>
+        <span class="tag">Social Media</span>
+      </div>
+    </div>
+    <div class="expertise-card reveal">
+      <div class="exp-num">03</div>
+      <h3 class="exp-title">Data<br>Analysis</h3>
+      <p class="exp-desc">Transforming complex datasets into executive-ready intelligence. Predictive modeling, market research synthesis, and performance dashboards that guide strategic decisions.</p>
+      <div class="exp-tags">
+        <span class="tag">Pandas</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">Data Science</span>
+        <span class="tag">Insights</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients-section" id="clients">
+  <div class="clients-inner">
+    <div class="clients-top">
+      <h2 class="clients-headline reveal">Trusted by<br><strong>Premium</strong><br>Brands</h2>
+      <p class="clients-note reveal">Managing partnerships with global and regional market leaders across automotive, FMCG, and financial services sectors through BL Marketing Group.</p>
+    </div>
+    <div class="clients-grid">
+      <div class="client-card reveal"><span>Corona</span></div>
+      <div class="client-card reveal"><span>BMW</span></div>
+      <div class="client-card reveal"><span>MINI</span></div>
+      <div class="client-card reveal"><span>Hyundai</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<div class="metrics-strip">
+  <div class="metric-item reveal">
+    <div class="metric-value">7+</div>
+    <div class="metric-label">Years in Market</div>
+  </div>
+  <div class="metric-item reveal">
+    <div class="metric-value">4+</div>
+    <div class="metric-label">Global Brands</div>
+  </div>
+  <div class="metric-item reveal">
+    <div class="metric-value">2</div>
+    <div class="metric-label">Companies Led</div>
+  </div>
+  <div class="metric-item reveal">
+    <div class="metric-value">3</div>
+    <div class="metric-label">Languages</div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-left reveal">
+    <div class="section-label">Contact</div>
+    <h2 class="contact-headline">Ready to<br><strong>transform</strong><br>your strategy?</h2>
+    <div class="contact-row">
+      <div class="contact-icon">✉</div>
+      <div>
+        <div class="c-label">Email</div>
+        <div class="c-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f59f80999c9790819d87b59890db969a98">[email&#160;protected]</a></div>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-icon">✆</div>
+      <div>
+        <div class="c-label">Phone / WhatsApp</div>
+        <div class="c-value">+1 829 719 2662</div>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-icon">◎</div>
+      <div>
+        <div class="c-label">Location</div>
+        <div class="c-value">Dominican Republic · Madrid, Spain</div>
+      </div>
+    </div>
+    <div class="contact-row">
+      <div class="contact-icon">◈</div>
+      <div>
+        <div class="c-label">Companies</div>
+        <div class="c-value">BL Marketing Group · True Research</div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-right reveal">
+    <div class="availability-box">
+      <div class="status-row">
+        <div class="status-dot"></div>
+        <div class="status-text">Available for New Projects</div>
+      </div>
+      <h3 class="avail-title">Strategic Consulting &<br><strong>Marketing Leadership</strong></h3>
+      <p class="avail-desc">Open to consulting engagements, strategic partnerships, and enterprise relationships across marketing, AI implementation, and data strategy.</p>
+      <ul class="services-list">
+        <li>AI Integration & Strategy</li>
+        <li>Digital Marketing Management</li>
+        <li>Data Analysis & Market Research</li>
+        <li>Brand Development & Paid Media</li>
+        <li>Social Media Strategy — B2B & B2C</li>
+      </ul>
+      <a href="/cdn-cgi/l/email-protection#a6ccd3cacfc4c3d2ced4e6cbc388c5c9cb" class="cta-email">Get In Touch →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Julibeth Rodríguez</div>
+  <div class="footer-copy">© 2026 — AI Consultant · Marketing Strategist · Data Analyst</div>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      
